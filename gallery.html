@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Myers Park TSA Club</title>
+    <meta name="description" content="View photos and videos from Myers Park TSA Club activities, competitions, and events.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Additional CSS for Gallery Page -->
+    <style>
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            background-color: var(--darker-color);
+            color: var(--light-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+        
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .modal-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 200, 83, 0.5);
+        }
+        
+        .modal-caption {
+            color: white;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--light-color);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            transform: translateY(-50%);
+        }
+        
+        .modal-prev, .modal-next {
+            color: var(--light-color);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-prev:hover, .modal-next:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .modal-nav {
+                padding: 0 1rem;
+            }
+            
+            .modal-prev, .modal-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../images/tsa-logo.png" alt="TSA Logo">
+                <h1>Myers Park TSA</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="competitions.html">Competitions</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Banner -->
+        <section class="page-banner">
+            <div class="tech-dots top-left"></div>
+            <div class="tech-line horizontal" style="bottom: 30%; right: 0;"></div>
+            
+            <div class="page-banner-content">
+                <h1>Gallery</h1>
+                <div class="breadcrumbs">
+                    <a href="../index.html">Home</a> <span>/</span> <span>Gallery</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">Photo Gallery</h2>
+                <p class="section-description">Explore photos from our club activities, competitions, and events.</p>
+                
+                <div class="gallery-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="robotics">Robotics</button>
+                    <button class="filter-btn" data-filter="coding">Coding</button>
+                    <button class="filter-btn" data-filter="competitions">Competitions</button>
+                    <button class="filter-btn" data-filter="events">Events</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/robotics-competition.jpg" alt="Robotics Competition">
+                        <div class="gallery-caption">Robotics Competition</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="coding">
+                        <img src="../images/coding-workshop.jpg" alt="Coding Workshop">
+                        <div class="gallery-caption">Coding Workshop</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="competitions">
+                        <img src="../images/state-conference.jpg" alt="State Conference">
+                        <div class="gallery-caption">State Conference</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="events">
+                        <img src="../images/team-building.jpg" alt="Team Building Activity">
+                        <div class="gallery-caption">Team Building Activity</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="competitions">
+                        <img src="../images/award-ceremony.jpg" alt="Award Ceremony">
+                        <div class="gallery-caption">Award Ceremony</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="events">
+                        <img src="../images/project-showcase.jpg" alt="Project Showcase">
+                        <div class="gallery-caption">Project Showcase</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/robotics-workshop.jpg" alt="Robotics Workshop">
+                        <div class="gallery-caption">Robotics Workshop</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="coding">
+                        <img src="../images/coding-competition.jpg" alt="Coding Competition">
+                        <div class="gallery-caption">Coding Competition</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="events">
+                        <img src="../images/guest-speaker.jpg" alt="Industry Guest Speaker">
+                        <div class="gallery-caption">Industry Guest Speaker</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="competitions">
+                        <img src="../images/national-conference.jpg" alt="National Conference">
+                        <div class="gallery-caption">National Conference</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/robot-design.jpg" alt="Robot Design Session">
+                        <div class="gallery-caption">Robot Design Session</div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="events">
+                        <img src="../images/tsa-members.jpg" alt="TSA Members">
+                        <div class="gallery-caption">TSA Members</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Gallery Section -->
+        <section class="about-section">
+            <div class="container">
+                <h2 class="section-title">Video Gallery</h2>
+                <p class="section-description">Watch videos from our competitions and events.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="background-color: var(--darker-color); border-radius: 10px; overflow: hidden; box-shadow: var(--box-shadow);">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/placeholder1" title="Robotics Competition Highlights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h3 style="color: var(--light-color); margin-bottom: 0.5rem;">Robotics Competition Highlights</h3>
+                            <p style="color: var(--gray-color);">Highlights from our team's performance at the regional robotics competition.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: var(--darker-color); border-radius: 10px; overflow: hidden; box-shadow: var(--box-shadow);">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/placeholder2" title="State Conference Recap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h3 style="color: var(--light-color); margin-bottom: 0.5rem;">State Conference Recap</h3>
+                            <p style="color: var(--gray-color);">A recap of our chapter's experience at the North Carolina TSA State Conference.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: var(--darker-color); border-radius: 10px; overflow: hidden; box-shadow: var(--box-shadow);">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/placeholder3" title="Project Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h3 style="color: var(--light-color); margin-bottom: 0.5rem;">Project Showcase</h3>
+                            <p style="color: var(--gray-color);">Students present their technology projects at our annual showcase event.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 2rem; color: var(--gray-color);">Note: Videos are placeholders. Actual videos will be added soon.</p>
+            </div>
+        </section>
+
+        <!-- Submit Photos Section -->
+        <section class="join-section">
+            <div class="container">
+                <h2 class="section-title">Submit Your Photos</h2>
+                <p class="section-description">Are you a TSA member with photos to share? Submit them to be featured in our gallery!</p>
+                
+                <div class="join-form">
+                    <h3>Photo Submission Form</h3>
+                    <form id="photo-submission-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event">Event Name</label>
+                            <input type="text" id="event" name="event" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Event Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Photo Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="robotics">Robotics</option>
+                                <option value="coding">Coding</option>
+                                <option value="competitions">Competitions</option>
+                                <option value="events">Events</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">Upload Photo (Max 5MB)</label>
+                            <input type="file" id="photo" name="photo" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Photo Description</label>
+                            <textarea id="description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: flex-start;">
+                                <input type="checkbox" name="permission" required style="margin-right: 10px; margin-top: 5px;">
+                                <span style="color: var(--gray-color);">I confirm that I have the rights to this photo and grant permission for it to be displayed on the Myers Park TSA website.</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-button">Submit Photo</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img class="modal-img" id="modalImg" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+        <div class="modal-nav">
+            <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
+            <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/tsa-logo.png" alt="TSA Logo" class="footer-logo-img">
+                    <h2>Myers Park TSA</h2>
+                    <p>Technology. Service. Achievement.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="competitions.html">Competitions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="join.html">Join Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://tsaweb.org/" target="_blank">National TSA</a></li>
+                        <li><a href="https://nctsa.org/" target="_blank">North Carolina TSA</a></li>
+                        <li><a href="https://www.cms.k12.nc.us/schools/myersparkhs/" target="_blank">Myers Park High School</a></li>
+                        <li><a href="contact.html">Contact Advisor</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Myers Park TSA Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+    
+    <!-- Additional JavaScript for Gallery Page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Gallery Modal
+            const modal = document.getElementById('galleryModal');
+            const modalImg = document.getElementById('modalImg');
+            const modalCaption = document.getElementById('modalCaption');
+            const modalClose = document.querySelector('.modal-close');
+            const modalPrev = document.querySelector('.modal-prev');
+            const modalNext = document.querySelector('.modal-next');
+            
+            let currentIndex = 0;
+            const visibleItems = () => Array.from(galleryItems).filter(item => item.style.display !== 'none');
+            
+            // Open modal when clicking on gallery item
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.querySelector('img').src;
+                    modalCaption.textContent = this.querySelector('.gallery-caption').textContent;
+                    
+                    // Set current index
+                    currentIndex = visibleItems().indexOf(this);
+                    
+                    // Update navigation buttons
+                    updateNavButtons();
+                });
+            });
+            
+            // Close modal
+            modalClose.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside of content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Previous image
+            modalPrev.addEventListener('click', function() {
+                const items = visibleItems();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+                
+                const item = items[currentIndex];
+                modalImg.src = item.querySelector('img').src;
+                modalCaption.textContent = item.querySelector('.gallery-caption').textContent;
+                
+                updateNavButtons();
+            });
+            
+            // Next image
+            modalNext.addEventListener('click', function() {
+                const items = visibleItems();
+                currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+                
+                const item = items[currentIndex];
+                modalImg.src = item.querySelector('img').src;
+                modalCaption.textContent = item.querySelector('.gallery-caption').textContent;
+                
+                updateNavButtons();
+            });
+            
+            // Update navigation buttons
+            function updateNavButtons() {
+                const items = visibleItems();
+                
+                if (items.length <= 1) {
+                    modalPrev.classList.add('hide');
+                    modalNext.classList.add('hide');
+                } else {
+                    modalPrev.classList.remove('hide');
+                    modalNext.classList.remove('hide');
+                }
+            }
+            
+            // Form submission
+            const photoForm = document.getElementById('photo-submission-form');
+            
+            if (photoForm) {
+                photoForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    
+                    // In a real application, you would send this data to a server
+                    console.log('Photo submission form submitted');
+                    
+                    // Show success message
+                    const formContainer = this.parentElement;
+                    this.style.display = 'none';
+                    
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your photo has been submitted successfully. It will be reviewed and added to the gallery soon.</p>
+                        <div class="center-button">
+                            <button class="secondary-button" id="resetForm">Submit Another</button>
+                        </div>
+                    `;
+                    
+                    formContainer.appendChild(successMessage);
+                    
+                    // Reset form button
+                    document.getElementById('resetForm').addEventListener('click', () => {
+                        photoForm.reset();
+                        successMessage.remove();
+                        photoForm.style.display = 'block';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Myers Park TSA Club</title>
+    <meta name="description" content="Contact the Myers Park TSA Club for information about membership, events, and partnerships.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="MPHS_TSA.png" alt="TSA Logo">
+                <h1>Myers Park TSA</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="competitions.html">Competitions</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Banner -->
+        <section class="page-banner">
+            <div class="tech-dots top-right"></div>
+            <div class="tech-line diagonal" style="bottom: 20%; left: 10%;"></div>
+            
+            <div class="page-banner-content">
+                <h1>Contact Us</h1>
+                <div class="breadcrumbs">
+                    <a href="../index.html">Home</a> <span>/</span> <span>Contact</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="about-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">Have questions about the Myers Park TSA Club? We're here to help!</p>
+                
+                <div class="contact-info-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location</h3>
+                        <p>Myers Park High School<br>2400 Colony Road<br>Charlotte, NC 28209</p>
+                        <p>Room 215 (Technology Lab)</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:tsa@myersparkhs.edu">tsa@myersparkhs.edu</a></p>
+                        <p>We typically respond within 24-48 hours.</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+17045551234">(704) 555-1234</a></p>
+                        <p>Available during school hours<br>Monday - Friday, 8:00 AM - 4:00 PM</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Meeting Times</h3>
+                        <p>Tuesdays & Thursdays<br>3:00 PM - 4:30 PM</p>
+                        <p>Visitors welcome with prior notice</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="join-section">
+            <div class="container">
+                <h2 class="section-title">Send Us a Message</h2>
+                <p class="section-description">Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <form id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="inquiry-type">Inquiry Type</label>
+                                <select id="inquiry-type" name="inquiry-type" required>
+                                    <option value="">Select Inquiry Type</option>
+                                    <option value="membership">Membership Information</option>
+                                    <option value="events">Events & Competitions</option>
+                                    <option value="partnership">Partnership Opportunities</option>
+                                    <option value="donation">Donations & Sponsorship</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label style="display: flex; align-items: flex-start;">
+                                    <input type="checkbox" name="newsletter" style="margin-right: 10px; margin-top: 5px;">
+                                    <span style="color: var(--gray-color);">Subscribe to our newsletter for updates on events and competitions.</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-image">
+                        <img src="../images/contact-image.jpg" alt="TSA Students Collaborating">
+                        <div class="contact-overlay">
+                            <h3>Connect With Us</h3>
+                            <div class="social-links">
+                                <a href="https://instagram.com/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="https://twitter.com/" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="https://facebook.com/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://youtube.com/" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                            </div>
+                            <div class="qr-code">
+                                <img src="../images/qr-code.png" alt="QR Code">
+                                <p>Scan to visit our Instagram</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="about-section">
+            <div class="container">
+                <h2 class="section-title">Find Us</h2>
+                <p class="section-description">Visit the Myers Park TSA Club at Myers Park High School.</p>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.2534454354426!2d-80.83690492346177!3d35.18401197275578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856a03af9487def%3A0x7a0eeb6e60ade37e!2sMyers%20Park%20High%20School!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0; border-radius: 10px; box-shadow: var(--box-shadow);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="directions">
+                    <h3>Directions</h3>
+                    <p>Our Technology Lab (Room 215) is located in the main building, second floor, east wing. Visitor parking is available in the front parking lot.</p>
+                    <p>For events and competitions, follow signs for designated parking areas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty Advisor Section -->
+        <section class="events-section">
+            <div class="container">
+                <h2 class="section-title">Meet Our Advisor</h2>
+                <p class="section-description">Get to know the faculty member who guides our TSA chapter.</p>
+                
+                <div class="advisor-profile">
+                    <div class="advisor-image">
+                        <img src="../images/advisor.jpg" alt="TSA Faculty Advisor">
+                    </div>
+                    <div class="advisor-info">
+                        <h3>Ms. Jennifer Reynolds</h3>
+                        <p class="advisor-title">TSA Faculty Advisor & Technology Education Teacher</p>
+                        <p class="advisor-bio">Ms. Reynolds has been teaching technology education for over 10 years and has served as the Myers Park TSA advisor since 2015. She holds a Master's degree in Educational Technology and is passionate about helping students develop their technical and leadership skills.</p>
+                        <p class="advisor-bio">Under her guidance, the Myers Park TSA chapter has won numerous awards at regional and state competitions, and several teams have qualified for the National TSA Conference.</p>
+                        <div class="advisor-contact">
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:jennifer.reynolds@myersparkhs.edu">jennifer.reynolds@myersparkhs.edu</a></p>
+                            <p><i class="fas fa-phone-alt"></i> <a href="tel:+17045551235">(704) 555-1235</a></p>
+                            <p><i class="fas fa-clock"></i> Office Hours: Monday-Friday, 7:30 AM - 8:30 AM & 3:00 PM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/tsa-logo.png" alt="TSA Logo" class="footer-logo-img">
+                    <h2>Myers Park TSA</h2>
+                    <p>Technology. Service. Achievement.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="competitions.html">Competitions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="join.html">Join Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://tsaweb.org/" target="_blank">National TSA</a></li>
+                        <li><a href="https://nctsa.org/" target="_blank">North Carolina TSA</a></li>
+                        <li><a href="https://www.cms.k12.nc.us/schools/myersparkhs/" target="_blank">Myers Park High School</a></li>
+                        <li><a href="contact.html">Contact Advisor</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Myers Park TSA Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/script.js"></script>
+    
+    <!-- Additional JavaScript for Contact Page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    
+                    // In a real application, you would send this data to a server
+                    console.log('Contact form submitted');
+                    
+                    // Show success message
+                    const formContainer = this.parentElement;
+                    this.style.display = 'none';
+                    
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for contacting the Myers Park TSA Club. We've received your message and will respond as soon as possible.</p>
+                        <div class="center-button">
+                            <button class="secondary-button" id="resetForm">Send Another Message</button>
+                        </div>
+                    `;
+                    
+                    formContainer.appendChild(successMessage);
+                    
+                    // Reset form button
+                    document.getElementById('resetForm').addEventListener('click', () => {
+                        contactForm.reset();
+                        successMessage.remove();
+                        contactForm.style.display = 'block';
+                    });
+                });
+            }
+            
+            // Animated social links
+            const socialLinks = document.querySelectorAll('.social-link');
+            
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
